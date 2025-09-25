@@ -1,0 +1,284 @@
+{
+  "intents": [
+    {
+      "tag": "greeting",
+      "patterns": ["hi", "hello", "hey", "good morning", "good evening", "greetings"],
+      "keywords": ["hi", "hello", "hey", "morning", "evening", "greetings"],
+      "responses": ["Hello! How can I help you?"],
+      "context_set": ""
+    },
+    {
+      "tag": "goodbye",
+      "patterns": ["bye", "goodbye", "see you", "thanks bye", "talk later"],
+      "keywords": ["bye", "goodbye", "see you", "later"],
+      "responses": ["Glad to help. Have a great day!"],
+      "context_set": ""
+    },
+    {
+      "tag": "fallback",
+      "patterns": [],
+      "keywords": [],
+      "responses": ["Sorry, I didn’t catch that. Ask about buying, renting, selling, property details, visits, or financing."],
+      "context_set": ""
+    },
+
+    {
+      "tag": "buyer_process_overview",
+      "patterns": ["how to buy a home", "home buying steps", "buying process", "steps to buy property"],
+      "keywords": ["buy", "home", "steps", "process"],
+      "responses": ["Typical steps: budget and loan pre-approval -> shortlist homes -> site visits -> offer and negotiation -> inspection -> finalize loan -> closing and registration."],
+      "context_set": ""
+    },
+    {
+      "tag": "buyer_loan_preapproval",
+      "patterns": ["pre approval", "mortgage preapproval", "how to get home loan", "loan pre approval"],
+      "keywords": ["preapproval", "loan", "mortgage", "pre-approval"],
+      "entities": ["budget_range"],
+      "responses": ["Pre-approval estimates loan amount and rate based on income and credit. So, this helps a buyer to set a budget and plan finances accordingly."],
+      "context_set": ""
+    },
+    {
+      "tag": "buyer_down_payment",
+      "patterns": ["down payment needed", "minimum down payment", "how much down payment"],
+      "keywords": ["down payment", "minimum", "advance"],
+      "entities": ["price"],
+      "responses": ["Down payment is typically 10–20% of the property price"],
+      "context_set": ""
+    },
+    {
+      "tag": "buyer_fees",
+      "patterns": ["extra charges","closing costs","stamp duty","registration charges","what are the other costs besides the property price","are there any hidden fees","government charges and taxes"],
+      "keywords": ["charges", "fees", "duty", "registration"],
+      "entities": ["city", "price"],
+      "responses": ["Expect stamp duty (6%), registration, legal review, loan processing, and valuation and also GST(5%) for new property."],
+      "context_set": ""
+    },
+    {
+      "tag": "buyer_new_vs_resale",
+      "patterns": ["new vs resale", "under construction vs ready", "ready to move or under construction"],
+      "keywords": ["new", "resale", "ready", "under construction"],
+      "responses": ["Ready homes offer immediate possession and lower project risk; under-construction may be cheaper but has completion risk."],
+      "context_set": ""
+    },
+
+    {
+      "tag": "rent_availability",
+      "patterns": ["available rentals", "flats for rent in", "rent in [location]", "apartments to rent"],
+      "keywords": ["rent", "lease", "rental", "to let"],
+      "entities": ["location", "bhk", "budget_range"],
+      "responses": ["Please share preferred location, BHK, and budget to list current rentals."],
+      "context_set": "collecting_requirements"
+    },
+    {
+      "tag": "rent_lease_terms",
+      "patterns": ["lease terms", "lock in period", "notice period", "agreement duration"],
+      "keywords": ["lease", "lock-in", "notice", "agreement"],
+      "entities": ["city", "duration"],
+      "responses": ["Common terms include 11-month agreements, 1–3 month notice, and lock-in as agreed."],
+      "context_set": ""
+    },
+    {
+      "tag": "rent_deposit",
+      "patterns": ["security deposit", "how much deposit", "rental deposit"],
+      "keywords": ["deposit", "security", "advance"],
+      "entities": ["city", "rent_amount"],
+      "responses": ["Security Deposits typically range from 1–6 months of rent."],
+      "context_set": ""
+    },
+
+    {
+      "tag": "seller_process_overview",
+      "patterns": ["how to sell", "selling process", "sell my property"],
+      "keywords": ["sell", "listing", "process"],
+      "responses": ["We evaluate the property, set pricing, market the listing, arrange visit and negotiate offers. Or else you can also provide your prefered ask."],
+      "context_set": ""
+    },
+    {
+      "tag": "seller_property_valuation",
+      "patterns": ["what is my home worth", "valuation", "price estimate", "CMA"],
+      "keywords": ["valuation", "worth", "price", "estimate"],
+      "entities": ["location", "area_sqft", "bhk"],
+      "responses": ["Share details of property such as carpet area, BHKs, location, etc for proper evaluation."],
+      "context_set": "collecting_valuation_details"
+    },
+    {
+      "tag": "seller_prep",
+      "patterns": ["how to prepare to sell", "staging tips", "improve value before selling"],
+      "keywords": ["prepare", "staging", "tips"],
+      "responses": ["Declutter, fix minor defects, refresh paint if needed, and ensure good lighting for better impressions."],
+      "context_set": ""
+    },
+
+    {
+      "tag": "listing_search_buy",
+      "patterns": ["2 bhk in [location] under [price]", "buy apartment near [landmark]", "properties for sale"],
+      "keywords": ["buy", "sale", "2bhk", "3bhk", "apartment", "flat"],
+      "entities": ["intent_type", "location", "bhk", "budget_range", "amenities"],
+      "responses": ["Looking for [bhk] in [location] within [budget]. Any must-have amenities like parking or clubhouse?"],
+      "context_set": "collecting_buy_filters"
+    },
+    {
+      "tag": "listing_search_rent",
+      "patterns": ["1 bhk for rent in [location] under [price]", "rent near [landmark]", "apartments to rent"],
+      "keywords": ["rent", "lease", "1bhk", "2bhk"],
+      "entities": ["intent_type", "location", "bhk", "budget_range", "furnishing"],
+      "responses": ["Noted. Preferred furnishing: furnished, semi-furnished, or unfurnished?"],
+      "context_set": "collecting_rent_filters"
+    },
+    {
+      "tag": "listing_details",
+      "patterns": ["tell me about listing [id]", "details for [id]", "amenities of [id]"],
+      "keywords": ["details", "amenities", "info", "specs"],
+      "entities": ["property_id"],
+      "responses": ["Key details for [property_id]: configuration, area, price/rent, floor, facing, amenities, and maintenance. Want to schedule a visit?"],
+      "context_set": ""
+    },
+    {
+      "tag": "listing_photos_floorplan",
+      "patterns": ["photos of [id]", "floor plan for [id]", "images for [id]"],
+      "keywords": ["photos", "images", "floor plan", "plan"],
+      "entities": ["property_id"],
+      "responses": ["Sharing photos and floor plan for [property_id]. Would a virtual tour help?"],
+      "context_set": ""
+    },
+
+    {
+      "tag": "schedule_visit",
+      "patterns": ["book a visit", "schedule site visit", "tour [id]", "viewing for [id]"],
+      "keywords": ["visit", "tour", "viewing", "schedule", "book"],
+      "entities": ["property_id", "date", "time", "contact_number"],
+      "responses": ["Please connect to 9999999999 or provide your contact details so that we can contact you."],
+      "context_set": "visit_pending_confirmation"
+    },
+    {
+      "tag": "virtual_tour",
+      "patterns": ["virtual tour", "video tour", "online walkthrough"],
+      "keywords": ["virtual", "video", "tour", "walkthrough"],
+      "entities": ["property_id"],
+      "responses": ["We’ll share a virtual walkthrough link for [property_id] and arrange a live video call if needed."],
+      "context_set": ""
+    },
+
+    {
+      "tag": "price_negotiable",
+      "patterns": ["is price negotiable", "can we negotiate", "best price for [id]"],
+      "keywords": ["price", "negotiable", "negotiate", "offer"],
+      "entities": ["property_id"],
+      "responses": ["Negotiability depends on seller stance and market demand but we will try to get you the best possible rate."],
+      "context_set": ""
+    },
+    {
+      "tag": "make_offer",
+      "patterns": ["i want to make an offer", "offer for [id]", "submit offer"],
+      "keywords": ["offer", "bid", "submit"],
+      "entities": ["property_id", "offer_price", "conditions"],
+      "responses": ["Please share your offer amount and any conditions (closing timeline, furnishings). We’ll present it to the seller."],
+      "context_set": "offer_in_progress"
+    },
+    {
+      "tag": "price_history_trends",
+      "patterns": ["price trend in [area]", "rate per sq ft in [area]", "average price in [area]"],
+      "keywords": ["trend", "rate", "price", "per sq ft", "average"],
+      "entities": ["location", "timeframe"],
+      "responses": ["We can provide recent transactions, average ₹/sq ft, and inventory trends for [location]."],
+      "context_set": ""
+    },
+
+    {
+      "tag": "home_loan_docs",
+      "patterns": ["loan documents needed", "mortgage documents", "home loan paperwork"],
+      "keywords": ["documents", "papers", "loan", "mortgage"],
+      "entities": ["employment_type"],
+      "responses": ["Common documents: KYC, income proofs, bank statements, property papers, and credit authorization. Lenders may vary."],
+      "context_set": ""
+    },
+    {
+      "tag": "government_schemes",
+      "patterns": ["pmay", "first time buyer benefits", "government subsidy"],
+      "keywords": ["pmay", "subsidy", "scheme", "first time"],
+      "entities": ["city", "income_band"],
+      "responses": ["Eligibility depends on income, carpet area caps, and property type."],
+      "context_set": ""
+    },
+
+    {
+      "tag": "rera_status",
+      "patterns": ["rera registered", "rera number for [project]", "rera status"],
+      "keywords": ["rera", "registration", "regd"],
+      "entities": ["project_name", "state"],
+      "responses": ["We will verify the project’s RERA registration number and status before proceeding."],
+      "context_set": ""
+    },
+    {
+      "tag": "title_due_diligence",
+      "patterns": ["is title clear", "encumbrance check", "legal review"],
+      "keywords": ["title", "encumbrance", "legal", "clear"],
+      "entities": ["property_id"],
+      "responses": ["Our legal team reviews title chain, encumbrances, and approvals to ensure clean transfer."],
+      "context_set": ""
+    },
+    {
+      "tag": "agreement_review",
+      "patterns": ["agreement draft review", "review sale agreement", "review lease agreement"],
+      "keywords": ["agreement", "draft", "review", "clauses"],
+      "entities": ["deal_type", "property_id"],
+      "responses": ["We’ll share a standard agreement draft and facilitate legal review for specific clauses."],
+      "context_set": ""
+    },
+
+    {
+      "tag": "kyc_requirements",
+      "patterns": ["kyc needed", "which kyc", "identity proof"],
+      "keywords": ["kyc", "identity", "proof", "documents"],
+      "entities": ["buyer_or_tenant"],
+      "responses": ["Standard KYC: PAN, Aadhaar/passport, photographs, and address proof. For companies, include incorporation and authorization documents."],
+      "context_set": ""
+    },
+    {
+      "tag": "possession_timeline",
+      "patterns": ["possession date", "handover timeline", "when is possession"],
+      "keywords": ["possession", "handover", "timeline"],
+      "entities": ["property_id"],
+      "responses": ["For ready homes, possession can be quick post-payment; for under-construction, as per builder schedule and milestones."],
+      "context_set": ""
+    },
+
+    {
+      "tag": "agency_services",
+      "patterns": ["what services do you offer", "how can you help", "services list"],
+      "keywords": ["services", "help", "assist"],
+      "responses": ["We offer end-to-end real estate solutions, including assistance with buying, selling, and renting residential and commercial properties."],
+      "context_set": ""
+    },
+    {
+      "tag": "agency_hours_contact",
+      "patterns": ["working hours", "contact number", "email", "office hours"],
+      "keywords": ["hours", "timings", "contact", "phone", "email"],
+      "responses": ["Our hours are Mon–Sun, time:10 to 7. Contact us at 9999999999 or sbc@gmail.com."],
+      "context_set": ""
+    },
+    {
+      "tag": "fees_brokerage",
+      "patterns": ["brokerage fees","charges", "commission", "what is your commission rate","how much brokerage do you charge","what are your fees for selling a property","agent commission"],
+      "keywords": ["brokerage", "fees", "charges", "commission"],
+      "entities": ["deal_type"],
+      "responses": ["Our brokerage fees are transparent and depend on the service: New Projects: Zero (0%) Brokerage, Resale Properties: 1% of the property value, Rentals: One month's rent"],
+      "context_set": ""
+    },
+
+    {
+      "tag": "smalltalk_thanks",
+      "patterns": ["thanks", "thank you", "much appreciated"],
+      "keywords": ["thanks", "thank"],
+      "responses": ["You’re welcome! Anything else to explore?"],
+      "context_set": ""
+    },
+    {
+      "tag": "smalltalk_who_are_you",
+      "patterns": ["who are you", "what can you do", "what is this"],
+      "keywords": ["who", "you", "what", "do"],
+      "responses": ["I am a virtual real estate assistant for SBC. I can help you with questions about buying, selling, or renting properties in the Mumbai area. How can I assist you today?"],
+      "context_set": ""
+    }
+  ]
+}
